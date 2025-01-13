@@ -1,4 +1,4 @@
-Feature: desec informacion
+Feature: desec informacionmarquito
 
   Scenario: desec el nombre de un colega
     Given url 'http://127.0.0.1:8080/encryption/decrypt'
