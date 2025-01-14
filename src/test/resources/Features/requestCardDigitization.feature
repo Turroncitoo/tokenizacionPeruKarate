@@ -12,11 +12,11 @@ Feature: Prueba de requestCardDigitization
             "walletUserId": "<one>"}
         }
       """
-    And headers { x-correlation-id: '8885910237667', x-issuer-id: '123'}
+    And headers { x-correlation-id: '8885910237633', x-issuer-id: '123'}
     And method POST
 
     Then status 200
 
   Example:
   |wallet|issuer|one|correlatioId|issuerid|
-  |Bank Pay|82fa211d99bc4bd43fd34e3d012dcc104e52a4f7c2f08331|55555|8885910237667|123|
+  |Bank Pay|82fa211d99bc4bd43fd34e3d012dcc104e52a4f7c2f08331|1|8885910237633|123|
