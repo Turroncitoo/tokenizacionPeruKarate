@@ -4,6 +4,6 @@ class PruebaRunner {
 
     @Karate.Test
     Karate testAll() {
-        return Karate.run("classpath:features/prueba.feature", "classpath:features/prueba2.feature");
+        return Karate.run( "classpath:features/pruebacheckCardEligibility.feature");
     }
 }
