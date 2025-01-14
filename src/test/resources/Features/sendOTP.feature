@@ -1,6 +1,8 @@
 
+@SendOTP
 Feature: Prueba de sendOTP
 
+  @envioMSN
   Scenario: Enviar un mensaje OTP a un numero telefonico del Peru
     Given url 'https://bfa-pe-tkz-qa-01-priv.fif.tech/issuer/igwapi/v2.0/sendOTP'
     When request
@@ -12,7 +14,6 @@ Feature: Prueba de sendOTP
       """
     And headers { x-correlation-id: '8885910237667', x-issuer-id: '123'}
     And method POST
-
     Then status 200
     # And match response contains { "plainText": "marquito2.0" }
 
