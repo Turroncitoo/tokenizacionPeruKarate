@@ -1,9 +1,9 @@
-import com.intuit.karate.junit5.Karate;
+    import com.intuit.karate.junit5.Karate;
 
-class PruebaRunner {
+    class PruebaRunner {
 
-    @Karate.Test
-    Karate testAll() {
-        return Karate.run( "classpath:features/checkCardEligibility.feature");
+        @Karate.Test
+        Karate testAll() {
+            return Karate.run().tags("@envioMSN").relativeTo(getClass());
+        }
     }
-}

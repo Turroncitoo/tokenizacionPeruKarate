@@ -3,7 +3,7 @@
 Feature: Prueba de sendOTP
 
   @envioMSN
-  Scenario: Enviar un mensaje OTP a un numero telefonico del Peru
+  Scenario Outline: Enviar un mensaje OTP a un numero telefonico del Peru
     Given url 'https://bfa-pe-tkz-qa-01-priv.fif.tech/issuer/igwapi/v2.0/sendOTP'
     When request
       """
@@ -12,11 +12,12 @@ Feature: Prueba de sendOTP
         "issuerCardRefId": "<issuer>",
         "otpValue": "<otpValue>"}
       """
-    And headers { x-correlation-id: '8885910237667', x-issuer-id: '123'}
+    And headers { x-correlation-id: '<correlatioId>', x-issuer-id: '<issuerid>'}
     And method POST
     Then status 200
+
     # And match response contains { "plainText": "marquito2.0" }
 
-  Example:
+  Examples:
     |wallet|issuer|otpValue|correlatioId|issuerid|
-    |GOOGLE_PAY|01fab1f3691820d1ba6facbf877f971d2c90ba1e86810397|55555|8885910237667|123|
+    |GOOGLE_PAY|82fa211d99bc4bd43fd34e3d012dcc104e52a4f7c2f08331|12388|8885910237654|FALAB_PE_1|
