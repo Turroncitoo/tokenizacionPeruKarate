@@ -1,4 +1,4 @@
-@requestCardDigitization
+@requestCardDigitization @tokenizacion
 Feature: Prueba de requestCardDigitization
 
   @pruebaSemaforo
@@ -19,5 +19,5 @@ Feature: Prueba de requestCardDigitization
     Then status 200
 
     Examples:
-      | wallet    | issuer                                         | one   | correlatioId | issuerid |
-      | Bank Pay  | 82fa211d99bc4bd43fd34e3d012dcc104e52a4f7c2f08331 | 55555 | 8885910237667 | 123      |
+      | wallet    | issuer                                           | one   | correlatioId  | issuerid |
+      | Bank Pay  | 82fa211d99bc4bd43fd34e3d012dcc104e52a4f7c2f08331 | 55555 | 8885910237654 | 123      |

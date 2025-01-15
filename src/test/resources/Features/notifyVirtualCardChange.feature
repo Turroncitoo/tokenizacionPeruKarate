@@ -1,6 +1,9 @@
+
+@tokenizacion @notifyVirtualCardChange
 Feature: Prueba de notifyVirtualCardChange
 
-  Scenario Outline: Notify
+  @recepcionNotificacion
+  Scenario Outline: Recepción de Notificacion
     Given url 'http://localhost:8080/fifpe/v2/notifyVirtualCardChange'
     When request
       """

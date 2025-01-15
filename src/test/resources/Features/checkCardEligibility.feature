@@ -1,11 +1,11 @@
 
-@checkCardElegibility
+@checkCardElegibility @tokenizacion
 Feature: Prueba de checkCardElegibility
 
   * def urlToken = "https://bfa-pe-tkz-qa-01-priv.fif.tech/issuer/igwapi/v2.0/checkCardEligibility"
 
-  @tokenTC
-  Scenario Outline: Generar un Token para una tarjeta de crédito
+  @generacionToken
+  Scenario Outline: Generar un Token para tarjetas debito y credito
     Given url urlToken
     When request
       """
@@ -27,31 +27,7 @@ Feature: Prueba de checkCardElegibility
     And match response.issuerCardRefId == '#notempty'
 
   Examples:
-  |wallet|id|originalToken|walletId|merchan|name|manual|cipher|correlationId|issuerId|
-  |walletId1|tokenRequestorid1|originalTokenRequestorId1|walletId1|merchantId1|tokenname1|MANUAL|8885910237654|E2EVTSBKV3|MIAGCSqGSIb3DQEHA6CAMIACAQIxggFXMIIBUwIBAoAMZmFsYWJlbGxhS2lkMDwGCSqGSIb3DQEBBzAvoA8wDQYJYIZIAWUDBAIBBQChHDAaBgkqhkiG9w0BAQgwDQYJYIZIAWUDBAIBBQAEggEAAAztOtB1hfg53etWLU2Y0slheRztj3aS0t5lID2K1e5/oCWDPg0vTPeBl9+PCe/YgVoE9TnhxHTsNr3uoj5jA16KYl1TRLJ4dU++i24nox4apwDy/N6tDFpAKgGjZ9rFcFKMXmbpn/YVDnkxEV8pHICQFFZhthcNCXO0zDHIUIIwUaYMqPMLaQK3uqn2M8XEKSyOUrshqAQUK1RSPiAyF4LGtZXDjPyJhS+z5QdP5/u8BcoIXsANddVg2u4jFk8WpD37K462/K1alsgGjHv9aZblsJlI2yZk+Q7EBkivAjiWbYs9Z4jDbzYvOWzw9Inuo98YIhaxLXZ5xPsyd4elJjCABgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBBKWJW7skC3FleWAgipX17VgEA3kFzH+n0VO6CN5+pRmQqrYcMNHdt8D1L4xIYxwmgMJBjwzYsEvWobZXFk/J+k3tkofaVD8TRH6/KWL8C3wgD8AAAAAAAAAAA=|
+  |wallet   |id               |originalToken            |walletId |merchan    |name        |manual|correlationId|issuerId  |cipher
+  |walletId1|tokenRequestorid1|originalTokenRequestorId1|walletId1|merchantId1|tokenCREDITO|MANUAL|8885910237654|E2EVTSBKV3|MIAGCSqGSIb3DQEHA6CAMIACAQIxggFXMIIBUwIBAoAMZmFsYWJlbGxhS2lkMDwGCSqGSIb3DQEBBzAvoA8wDQYJYIZIAWUDBAIBBQChHDAaBgkqhkiG9w0BAQgwDQYJYIZIAWUDBAIBBQAEggEAsuqxvUdsoEr0UEAedVBz2pWGjSASPiIbmVxAKQNeVaook/RjOVfHvvulCGPEmc8xwn7zYl3EITSKUU3o2BK2TQbhwD9zTGL+v+906uxh7/VuJrg2li8gKOk89SCewAUzqplC2NeQx01NFMaXEjGSPLdhftRFO9ENJhM8xMT0/jQfcTjxiq7g5+d2NQ+YOhe0gyQbtTRPFHuo0r9wh6CIgA7Xt9C10NLucoLpN1S2h74dA7hAVR+TSy+8i3FEgrsUxRFlLT96QMLBLKwVgX6u++sNcw6Dgf/uWTtXaK5rjr+3PAUMP+docGKDY3ThMWTjGrMEV87gayC6/XhY7f+8OzCABgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBDPNpwDNn2sEWOVR/+UwGlRgEArnXDfydkr7MpPvXtjsTwIn5FgvfMr/Z0RGL4pygLRn+Aw0KxnLXF3NbzUJ/Z5dHJ8E3t2yfgQEvuJ7djQmHSFAAAAAAAAAAA=
+  |walletId2|tokenRequestorid2|originalTokenRequestorId2|walletId2|merchantId2|tokenDEBITO |MANUAL|8885910237654|E2EVTSBKV3|MIAGCSqGSIb3DQEHA6CAMIACAQIxggFXMIIBUwIBAoAMZmFsYWJlbGxhS2lkMDwGCSqGSIb3DQEBBzAvoA8wDQYJYIZIAWUDBAIBBQChHDAaBgkqhkiG9w0BAQgwDQYJYIZIAWUDBAIBBQAEggEAR9/1a718d2Td97UHJd6TLLkjHaY5sBV3gWP6dJr0XlEXIfbOmvqQ6zJCQ2Ezy2abnt690k21q7WfMQ/GYzp0kMQZ8Uf28KlpBSmCIitYVhTpsrNh7g9gTaF8KfEM78hWc6rRS6i0cPUMbIQCFR5Dh9/qCHKd3HRU4nbmbWb0a8HIcGH8XLhU9INfPrUwD7/QSTHnOnZJY03ea3jKc10sZxyhn+O47tZ/ysOUB+8h0eUpl90mIkFplhpjgWd2ybeobMy/U0CZKhQXnv7MvLY0nEj4l4NhK0+gDei8CT0KNEpigAM5fCX8eAt4T2paQRpsMa/UZa1rqBNEyi6a9BC66zCABgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBCV28RKBUhVs1BExOG1SNSpgECGODQ0peD7ut4nZbYNO5V5munxgHX4O13aS5C/kbcXu8qoNabAMFoc8mQegqQBubeOfxRRJjDNJoElqQcYfbidAAAAAAAAAAA=
 
-  @tokenTD
-  Scenario Outline: Generar un Token para una tarjeta de débito
-    Given url urlToken
-    When request
-      """
-      {
-        "cipheredCardInfo": "<cipher>"
-        "walletProviderId": "<wallet>",
-        "tokenRequestor":{
-        "id": "<id>"
-        "originalTokenRequestorId": "<originalToken>"
-        "walletId":"<walletId>"
-        "merchantId":"<merchan>"
-        "name":"<name>"
-        }
-        "captureMethod":"<manual>"
-      """
-    And headers { x-correlation-id: '<correlationId>', x-issuer-id: '<issuerId>'}
-    And method POST
-    Then status 200
-    And match response.issuerCardRefId == '#notempty'
-
-    Examples:
-  |wallet|id|originalToken|walletId|merchan|name|manual|cipher|correlationId|issuerId|
-  |walletId1|tokenRequestorid1|originalTokenRequestorId1|walletId1|merchantId1|tokenname1|MANUAL|8885910237654|E2EVTSBKV3|MIAGCSqGSIb3DQEHA6CAMIACAQIxggFXMIIBUwIBAoAMZmFsYWJlbGxhS2lkMDwGCSqGSIb3DQEBBzAvoA8wDQYJYIZIAWUDBAIBBQChHDAaBgkqhkiG9w0BAQgwDQYJYIZIAWUDBAIBBQAEggEAAAztOtB1hfg53etWLU2Y0slheRztj3aS0t5lID2K1e5/oCWDPg0vTPeBl9+PCe/YgVoE9TnhxHTsNr3uoj5jA16KYl1TRLJ4dU++i24nox4apwDy/N6tDFpAKgGjZ9rFcFKMXmbpn/YVDnkxEV8pHICQFFZhthcNCXO0zDHIUIIwUaYMqPMLaQK3uqn2M8XEKSyOUrshqAQUK1RSPiAyF4LGtZXDjPyJhS+z5QdP5/u8BcoIXsANddVg2u4jFk8WpD37K462/K1alsgGjHv9aZblsJlI2yZk+Q7EBkivAjiWbYs9Z4jDbzYvOWzw9Inuo98YIhaxLXZ5xPsyd4elJjCABgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBBKWJW7skC3FleWAgipX17VgEA3kFzH+n0VO6CN5+pRmQqrYcMNHdt8D1L4xIYxwmgMJBjwzYsEvWobZXFk/J+k3tkofaVD8TRH6/KWL8C3wgD8AAAAAAAAAAA=|

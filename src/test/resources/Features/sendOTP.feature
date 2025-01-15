@@ -1,5 +1,5 @@
 
-@SendOTP
+@SendOTP @tokenizacion
 Feature: Prueba de sendOTP
 
   @envioMSN
@@ -16,7 +16,7 @@ Feature: Prueba de sendOTP
     And method POST
     Then status 200
 
-    # And match response contains { "plainText": "marquito2.0" }
+
 
   Examples:
     |wallet|issuer|otpValue|correlatioId|issuerid|
