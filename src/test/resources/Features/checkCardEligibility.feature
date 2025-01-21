@@ -16,32 +16,14 @@ Feature: Prueba de checkCardElegibility
         return result;
         }
         """
+    * def requestCheckCard = read('Data\\checkCardEligibility\\requestCheckCard.json')
 
   @generacionToken
   Scenario Outline: Generar un Token para tarjetas debito y credito
     Given url urlToken
-    When request
-      """
-      {
-        "cipheredCardInfo": "<cipher>",
-        "walletProviderId": "<wallet>",
-        "tokenRequestor":{
-          "id": "<id>",
-          "originalTokenRequestorId": "<originalToken>",
-          "walletId":"<walletId>",
-          "merchantId":"<merchan>",
-          "name":"<name>"
-        },
-        "captureMethod":"<manual>"
-      }
-      """
-    And headers
-    """
-    {
-      "x-correlation-id": "#(generateCorrelationId())",
-      "x-issuer-id": "<issuerId>"
-    }
-    """
+    When request requestCheckCard
+    And headers {"x-correlation-id": "#(generateCorrelationId())","x-issuer-id": "<issuerId>"}
+
     And method POST
     Then status 200
     # And match response.issuerCardRefId == '#notempty'
