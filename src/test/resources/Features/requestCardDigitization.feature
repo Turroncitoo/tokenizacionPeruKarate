@@ -1,9 +1,11 @@
 @requestCardDigitization @tokenizacion
 Feature: Prueba de requestCardDigitization
 
+  Background:
+    * def urlToken = "https://bfa-pe-tkz-qa-01-priv.fif.tech/issuer/igwapi/v2.0/requestCardDigitization"
   @pruebaSemaforo
   Scenario Outline: Pruebas semáforo para requestCardDigitization
-    Given url 'https://bfa-pe-tkz-qa-01-priv.fif.tech/issuer/igwapi/v2.0/requestCardDigitization'
+    Given url urlToken
     When request
       """
       {
@@ -11,7 +13,8 @@ Feature: Prueba de requestCardDigitization
         "issuerCardRefId": "<issuer>",
         "walletUserInformation": {
           "walletUserId": "<one>"
-        }
+        },
+        "deviceInformation": {}
       }
       """
     And headers { "x-correlation-id": "<correlatioId>", "x-issuer-id": "<issuerid>" }
