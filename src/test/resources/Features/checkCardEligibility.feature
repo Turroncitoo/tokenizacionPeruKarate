@@ -11,7 +11,7 @@ Feature: Prueba de checkCardElegibility
           var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
           var result = '';
           for (var i = 0; i < randomLength; i++) {
-            result += characters.charAt(Ma  th.floor(Math.random() * characters.length));
+            result += characters.charAt(Math.floor(Math.random() * characters.length));
           }
         return result;
         }
