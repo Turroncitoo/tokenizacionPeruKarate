@@ -21,7 +21,7 @@ Feature: Prueba de checkCardElegibility
   @generacionToken
   Scenario Outline: Generar un Token para tarjetas debito y credito
     Given url urlToken
-    When request RequestCheckCard
+    When request requestCheckCard
     And headers {"x-correlation-id": "#(generateCorrelationId())","x-issuer-id": "<issuerId>"}
 
     And method POST

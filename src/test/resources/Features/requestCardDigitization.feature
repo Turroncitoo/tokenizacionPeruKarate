@@ -7,7 +7,7 @@ Feature: Prueba de requestCardDigitization
   @pruebaSemaforo
   Scenario Outline: Pruebas semáforo para RequestCardDigitization
     Given url urlToken
-    When request RequestCard
+    When request requestCardDigitalization
     And headers { "x-correlation-id": "<correlatioId>", "x-issuer-id": "<issuerid>" }
     And method POST
     Then status 200

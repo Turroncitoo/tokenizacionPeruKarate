@@ -3,10 +3,10 @@
 Feature: Prueba de notifyVirtualCardChange
  Background:
    * def requestvirtualcard = read('classpath:/Data/VirtualCardChange/requestvirtualcard.json')
-    Given url 'http://localhost:8080/fifpe/v2/notifyVirtualCardChange'
   @recepcionNotificacion
   Scenario Outline: Recepción de Notificacion
-    When request
+    Given url 'http://localhost:8080/fifpe/v2/notifyVirtualCardChange'
+    When request requestvirtualcard
     And headers { "x-correlation-id": "<correlation>", "x-issuer-id": "<issuer>" }
     And method POST
     Then status 200
