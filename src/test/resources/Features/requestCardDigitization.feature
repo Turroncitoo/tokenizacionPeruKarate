@@ -2,12 +2,12 @@
 Feature: Prueba de requestCardDigitization
 
   Background:
-    * def urlToken = "https://bfa-pe-tkz-qa-01-priv.fif.tech/issuer/igwapi/v2.0/requestCardDigitization"
+    * def urlToken = "https://bfa-pe-tkz-qa-01-priv.fif.tech/issuer/igwapi/v2.0/RequestCardDigitization"
     * def requesCardDigitalization = read('classpath:/Data/requesCardDigitalization/requescard.json')
   @pruebaSemaforo
-  Scenario Outline: Pruebas semáforo para requestCardDigitization
+  Scenario Outline: Pruebas semáforo para RequestCardDigitization
     Given url urlToken
-    When request
+    When request RequestCard
     And headers { "x-correlation-id": "<correlatioId>", "x-issuer-id": "<issuerid>" }
     And method POST
     Then status 200

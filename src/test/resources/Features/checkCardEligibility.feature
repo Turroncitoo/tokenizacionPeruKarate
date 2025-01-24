@@ -16,15 +16,12 @@ Feature: Prueba de checkCardElegibility
         return result;
         }
         """
-    * def requestCheckCard = read('classpath:/Data/checkCardElegibility/requestCheckCard.json')
-
-
-
+    * def requestCheckCard = read('classpath:/Data/checkCardElegibility/RequestCheckCard.json')
 
   @generacionToken
   Scenario Outline: Generar un Token para tarjetas debito y credito
     Given url urlToken
-    When request requestCheckCard
+    When request RequestCheckCard
     And headers {"x-correlation-id": "#(generateCorrelationId())","x-issuer-id": "<issuerId>"}
 
     And method POST

@@ -2,12 +2,12 @@
 @SendOTP @tokenizacion
 Feature: Prueba de sendOTP
  Background:
-   * def requestSendOTP = read('classpath:/Data/sendOTP/requestSendOTP.json')
+   * def requestSendOTP = read('classpath:/Data/sendOTP/RequestSendOTP.json')
   @envioMSN
   Scenario Outline: Enviar un mensaje OTP a un numero telefonico del Peru
     Given url 'https://bfa-pe-tkz-qa-01-priv.fif.tech/issuer/igwapi/v2.0/sendOTP'
     When request requestSendOTP
-    And headers { x-correlation-id: '<correlatioId>', x-issuer-id: '<issuerid>'}
+    And headers { "x-correlation-id": "<correlatioId>", "x-issuer-id": "<issuerid>"}
     And method POST
     Then status 200
 
