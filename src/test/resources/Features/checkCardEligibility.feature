@@ -16,7 +16,10 @@ Feature: Prueba de checkCardElegibility
         return result;
         }
         """
-    * def requestCheckCard = read('Data\\checkCardEligibility\\requestCheckCard.json')
+    * def requestCheckCard = read('classpath:/Data/checkCardElegibility/requestCheckCard.json')
+
+
+
 
   @generacionToken
   Scenario Outline: Generar un Token para tarjetas debito y credito
