@@ -2,6 +2,7 @@
 Feature: Prueba de requestCardDigitization
 
   Background:
+    * def urlToken = "https://bfa-pe-tkz-qa-01-priv.fif.tech/issuer/igwapi/v2.0/requestCardDigitization"
     * def requesCardDigitalization = read('classpath:/Data/requesCardDigitalization/requescard.json')
   @pruebaSemaforo
   Scenario Outline: Pruebas semáforo para requestCardDigitization
