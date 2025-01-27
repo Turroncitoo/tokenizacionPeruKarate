@@ -4,6 +4,6 @@
 
         @Karate.Test
         Karate testAll() {
-            return Karate.run().tags("@envioMSN").relativeTo(getClass());
+            return Karate.run().tags("@checkCardElegibility").relativeTo(getClass());
         }
     }

@@ -3,24 +3,17 @@
 Feature: Prueba de checkCardElegibility
 
   Background:
-  * def urlToken = "https://bfa-pe-tkz-qa-01-priv.fif.tech/issuer/igwapi/v2.0/checkCardEligibility"
-  * def generateCorrelationId =
-        """
-        function() {
-          var randomLength = Math.floor(Math.random() * 64) + 1; // obtengo una longitud entre 1 <= X <= 64
-          var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-          var result = '';
-          for (var i = 0; i < randomLength; i++) {
-            result += characters.charAt(Math.floor(Math.random() * characters.length));
-          }
-        return result;
-        }
-        """
-    * def requestCheckCard = read('classpath:/Data/checkCardElegibility/RequestCheckCard.json')
+    * def baseUrl = karate.get('baseUrl')
+    * def paths = karate.get('paths')
+    * def helpers = read('classpath:/Helpers/correlationHelpers.js')
+    #* def utils = read('classpath:/Utils/utils.js')
+    * def requestCheckCard = read('classpath:/Data/checkCardElegibility/requestCheckCard.json')
+    * def generateCorrelationId = helpers.correlationID
+
 
   @generacionToken
   Scenario Outline: Generar un Token para tarjetas debito y credito
-    Given url urlToken
+    Given url utils.concatenar(baseUrl,paths)
     When request requestCheckCard
     And headers {"x-correlation-id": "#(generateCorrelationId())","x-issuer-id": "<issuerId>"}
 
